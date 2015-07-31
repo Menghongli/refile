@@ -104,11 +104,11 @@ module Refile
 
             if files.empty? and cache.present?
               cache.select(&:present?).each do |file|
-                send(association_name).build(attachment => file.to_json)
+                send(association_name).create(attachment => file.to_json)
               end
             else
               files.select(&:present?).each do |file|
-                send(association_name).build(attachment => file)
+                send(association_name).create(attachment => file)
               end
             end
           end
